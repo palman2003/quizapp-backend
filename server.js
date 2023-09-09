@@ -21,7 +21,7 @@ app.use(express.json());
 
 const port=process.env.PORT || 3000
 
-mongoose.connect(process.env.QUIZAPP_DB_URI)
+mongoose.connect(process.env.QUIZAPP_DB_URI, { useNewUrlParser: true })
     .then(()=>{
         app.listen(port,()=>{
             console.log(`connected to db and listening on port ${port}`)
