@@ -9,19 +9,13 @@ require('dotenv').config()
 
 const app= express()
 
-const corsOptions = {
-    origin: 'https://fodse-backend.onrender.com/', // Replace with your Render app URL
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-  };
-  
-app.use(cors(corsOptions));
 
 app.use(express.json());
-
+app.use(cors());
 
 const port=process.env.PORT || 3000
 
-mongoose.connect(process.env.QUIZAPP_DB_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.QUIZAPP_DB_URI)
     .then(()=>{
         app.listen(port,()=>{
             console.log(`connected to db and listening on port ${port}`)
