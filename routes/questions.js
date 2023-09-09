@@ -7,13 +7,13 @@ const User=require("../models/user")
 
 
 router.get("/",async (req,res)=>{
-  fetchQuestion((err, questionArray) => {
-    if (err) {
-      console.error("Error:", err);
-    } else {
-      console.log("Fetched questions:", questionArray);
-      res.json(questionArray)
-    }
+  fetchQuestion()
+  .then(questionArray => {
+    console.log("Fetched questions:", questionArray);
+    res.json(questionArray);
+  })
+  .catch(error => {
+    console.error("Error:", error);
   });
 });
 
