@@ -9,7 +9,7 @@ const fetchQuestions = (callback) => {
       console.error("Error fetching questions:", err);
       callback(err, null);
     } else {
-      let question = [questions];
+      let question = questions;
       callback(null, question);
     }
   });

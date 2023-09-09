@@ -2,18 +2,19 @@ const express= require('express')
 
 const router=express.Router()
 
-const Question=require("../models/question")
+const fetchQuestion=require("../models/question")
 const User=require("../models/user")
 
 
 router.get("/",async (req,res)=>{
-    try {
-        const questions = await Question.find();
-        res.json(questions);
-      } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Server error" });
-      }
+  fetchQuestion((err, questionArray) => {
+    if (err) {
+      console.error("Error:", err);
+    } else {
+      console.log("Fetched questions:", questionArray);
+      res.json(questionArray)
+    }
+  });
 });
 
 router.post('/',async(req,res)=>{
