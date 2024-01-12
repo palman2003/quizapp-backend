@@ -17,7 +17,7 @@ router.get("/",async (req,res)=>{
   });
 });
 
-router.post('/user',async(req,res)=>{
+router.post('/',async(req,res)=>{
   const {name, email, department, score}=req.body;
 
   try{
